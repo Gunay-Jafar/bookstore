@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Online Book Store</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">Books in my Cart</h2>
+<br>
+<table class="center">
+
+    <tr th:id="${book.id}" th:each="book : ${cart.books}">
+        <td><a th:href="@{/book/view(isbn=${book.isbn})}">
+            <img style="width: 120px;height: 150px"
+                 th:src="@{${'/resources/images/' + book.imageName}}"/>
+        </a>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td th:text="${book.name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${'by '+ book.author}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.price + ' USD'}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.pageSize + ' pages'}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.publishDate + ' date'}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.description}"></td>
+                </tr>
+                <tr>
+                    <form th:action="@{/book/removeFromCart(isbn=${book.isbn})}" method="POST" >
+                        <td class="center">
+                            <input type="submit" value="Remove" style="color: red"/>
+                        </td>
+                    </form>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+<form th:if="${!cart.getBooks().isEmpty()}" th:action="@{/checkoutPage}" method="GET" class="center" >
+    <td class="center">
+        <input type="submit" value="Checkout" style="color: blue"/>
+    </td>
+</form>
+
+</body>
+</html>

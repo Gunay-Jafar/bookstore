@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Login</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">User Login</h2>
+
+<div th:class="center" th:if="${error != null}" style="color: red"
+     th:utext="${error}" class="error">...
+</div>
+
+<form th:action="@{/user/login}" method="POST" class="center">
+    <table class="center">
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" th:name="username" th:placeholder="Username"/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" th:name="password" th:placeholder="Password"/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input type="submit" value="Login"/>
+                <input type="reset" value="Reset"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

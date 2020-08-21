@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Registration</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">User Registration</h2>
+
+<form th:action="@{/user/register}" th:object="${user}" method="POST" class="center">
+    <table class="center">
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" th:field="*{username}"/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" th:field="*{password}"/></td>
+        </tr>
+        <tr>
+            <td>Confirm</td>
+            <td><input type="password" th:field="*{confirmPassword}"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <select th:field="*{gender}">
+                    <option value=""> --</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="center">
+                <input type="submit" value="Submit"/>
+                <input type="reset" value="Reset"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Registration</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">Book Update</h2>
+
+<form th:action="@{/book/findByIsbn}" method="get" class="center">
+    <p>Isbn:   <input th:name="isbn"/> </p>
+    <td class="center">
+        <input type="submit" value="Search"/>
+        <input type="reset" value="Reset"/>
+    </td>
+</form>
+
+<form th:action="@{/book/update}" th:object="${book}" method="POST" class="center">
+    <table>
+        <tr>
+            <td>ISBN</td>
+            <td><input type="text" readonly th:field="${book.isbn}"/></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="${book.name}"/></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td><input type="text" th:field="${book.author}"/></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" th:field="${book.price}"/></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" th:field="${book.description}"/></td>
+        </tr>
+        <tr>
+            <td>Page size</td>
+            <td><input type="text" th:field="${book.pageSize}"/></td>
+        </tr>
+        <tr>
+            <td>Publish date</td>
+            <td><input type="date" th:field="${book.publishDate}"/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="center">
+                <input type="submit" name="action" value="Delete"/>
+                <input type="submit" name="action" value="Update"/>
+                <input type="reset" value="Reset"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

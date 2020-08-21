@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Online Book Store</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">My Orders</h2>
+<br>
+<table class="center">
+
+    <tr th:id="${order.id}" th:each="order : ${orders}" class="center">
+        <td>
+            <table class="center">
+                <tr>
+                    <td th:text="${'Order number: ' + order.orderNumber}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${'User: '+ order.user.username}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${'Book count: ' + order.books.size()}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${'Datetime: ' + order.dateTime}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

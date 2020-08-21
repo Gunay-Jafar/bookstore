@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Online Book Store</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">All Books</h2>
+<br>
+<table class="center">
+
+    <tr th:id="${book.id}" th:each="book : ${books}">
+        <td>
+            <table>
+                <tr>
+                    <td th:text="${book.name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${'by '+ book.author}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.price + ' USD'}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${book.pageSize}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

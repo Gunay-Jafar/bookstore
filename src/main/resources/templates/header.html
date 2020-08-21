@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Online Book Store</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 class="center">Welcome to Online Book Store</h1>
+<div style="
+    border: 1px ;
+    padding: 5px;
+    margin-bottom:20px;
+    background: #f0e68c;
+    display: flex;
+    justify-content: space-between;">
+
+    <div style="display: inline-block;">
+        <a th:href="@{/}">Home</a>
+
+        &nbsp;
+
+        <a th:href="@{/login}">Login</a>
+
+        &nbsp;
+
+        <a th:href="@{/register}">Register</a>
+
+        &nbsp;
+
+        <a th:if="${#response.getHeader('role') == 'ADMIN'}" th:href="@{/bookPage}">Book Management</a>
+
+    </div>
+
+    <div style="text-align: right">
+        <a th:href="@{/cartPage}">My Cart</a>
+        &nbsp;
+        <a th:href="@{/ordersPage}">My Orders</a>
+        &nbsp;
+        <a th:href="@{user/logout}">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>

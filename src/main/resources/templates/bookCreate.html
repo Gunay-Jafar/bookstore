@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Registration</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">Book Creation</h2>
+
+<form th:action="@{/book/create}" th:object="${book}" method="POST" class="center">
+    <table class="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>ISBN</td>
+            <td><input type="text" th:field="*{isbn}"/></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td><input type="text" th:field="*{author}"/></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" th:field="*{description}"/></td>
+        </tr>
+        <tr>
+            <td>Image Name</td>
+            <td><input type="text" th:field="*{imageName}"/></td>
+        </tr>
+        <tr>
+            <td>PageSize</td>
+            <td><input type="text" th:field="*{pageSize}"/></td>
+        </tr>
+        <tr>
+            <td>PublishDate</td>
+            <td><input type="date" th:field="*{publishDate}"/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="center">
+                <input type="submit" value="Submit"/>
+                <input type="reset" value="Reset"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

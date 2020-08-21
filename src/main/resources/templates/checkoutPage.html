@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Registration</title>
+    <style>
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Include header.html -->
+<th:block th:include="/header"></th:block>
+
+<h2 class="center">Checkout</h2>
+
+<ul class="center">
+    <li>Total: <span th:utext="${total} + ' USD'">..</span></li>
+</ul>
+
+<form th:action="@{/book/checkout}" th:object="${card}" method="POST" class="center">
+    <table class="center">
+        <tr>
+            <td>Card No</td>
+            <td><input type="text" th:field="*{cardNo}"/></td>
+        </tr>
+        <tr>
+            <td>Expire date</td>
+            <td><input type="date" th:field="*{expireDate}"/></td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="center">
+                <input type="submit" value="Checkout"/>
+                <input type="reset" value="Reset"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
